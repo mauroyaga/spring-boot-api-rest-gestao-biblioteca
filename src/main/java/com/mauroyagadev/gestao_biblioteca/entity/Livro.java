@@ -3,9 +3,9 @@ package com.mauroyagadev.gestao_biblioteca.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -30,5 +30,6 @@ public class Livro {
 
     @Column(nullable = false, length = 50)
     private String categoria;
-
+    @OneToMany(mappedBy = "livro")
+    private List<Emprestimo> emprestimos;
 }

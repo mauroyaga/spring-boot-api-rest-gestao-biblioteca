@@ -1,15 +1,14 @@
 package com.mauroyagadev.gestao_biblioteca.entity;
 
 import jakarta.persistence.*;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +22,6 @@ public class Usuario {
 
     @Column(nullable = false, length =  20)
     private String telefone;
+    @OneToMany(mappedBy = "usuario")
+    private List<Emprestimo> emprestimos;
 }
