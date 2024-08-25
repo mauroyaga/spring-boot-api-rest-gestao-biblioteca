@@ -1,8 +1,8 @@
-# API de gestão de biblioteca
+# API REST Gestão de Biblioteca
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)![SpingBoot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-- Autor: Mauro Cesar Yaga Junior
-- Data: 2024-08-28
-- Versão: 1.0.0
+Este projeto conciste em uma API Java com Sping Boot para gestão de blioteca. Foi desenvolvido a mérito de estudos, com base em um desafio técnico. Ainda tem diversos pontos a ser aprimorado
+mas pode contribuir para o conhecimento deste tipo de tecnologia.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ---
 
-## Descrição
+# Descrição
 
 Este projeto é uma API de gestão de biblioteca desenvolvida em Java com o framework Spring Boot. 
 A API permite a manipulação de livros, usuários e empréstimos em um banco de dados relacional.  
@@ -28,7 +28,7 @@ O objetivo de desenvolvimento desta API atender os requisitos de um desafio de d
 
 ---
 
-## Tecnologias
+ Tecnologias
 
 - Java: Linguagem de programação usada para desenvolver a aplicação.
 - Spring Boot: Framework para facilitar o desenvolvimento de aplicações Java.
@@ -40,7 +40,7 @@ O objetivo de desenvolvimento desta API atender os requisitos de um desafio de d
 
 ---
 
-## Dependências
+# Dependências
 
 A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 
@@ -53,7 +53,7 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 
 ---
 
-## Instruções
+# Instruções
 
 ***Requisitos para rodar a aplicação:***
  - java 17 ou superior
@@ -97,7 +97,7 @@ Com a API rodando, você pode acessar a documentação da API no Swagger, atrav�
 
 ---
 
-## Documentação
+# Documentação
 
 **Requisitos do projeto:**
 
@@ -143,11 +143,11 @@ As relações entre as entidades são:
   
 ---
 
-## Abordagem
+# Abordagem
 
 ---
 
 
-## Disclaimers
+# Disclaimers
 
 ...
