@@ -28,7 +28,7 @@ O objetivo de desenvolvimento desta API atender os requisitos de um desafio de d
 
 ---
 
- Tecnologias
+ # Tecnologias
 
 - Java: Linguagem de programação usada para desenvolver a aplicação.
 - Spring Boot: Framework para facilitar o desenvolvimento de aplicações Java.
@@ -55,28 +55,35 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 
 # Instruções
 
-***Requisitos para rodar a aplicação:***
+**Requisitos para rodar a aplicação:**
  - java 17 ou superior
  - jdk
- - maven 
- - docker 
- - docker-compose
- - IDE de sua preferência
+ - Maven 
+ - Docker 
+ - Docker-compose
+ - IDE 
  - SGBD 
 
-Para testar esta API de gestão de biblioteca, siga os passos abaixo:
+**Para testar esta API de gestão de biblioteca, siga os passos abaixo**
 
-***clone o repositório:***
+**clone o repositório:**
 
 ```bash
 git clone https://github.com/mauroyaga/sring-boot-api-rest-gestao-biblioteca.git
 ```
 O próximo passo é subir uma imagem docker com um servidor PostgreSQL. Para isso é necessario ter o Docker instalado na sua máquina.
 Em alguns casos, é necessario iniciar o serviço do Docker em background.
-Com a API clonada e aberta na sua IDE de preferência, execute o comando para rodar o banco de dados em um container Docker:
+
+Com o arquivo clonado, descompactado e aberto na sua IDE de preferência, execute o comando para rodar o banco de dados em um container Docker:
 
 ```bash
 docker-compose up -d
+```
+
+Você verificar se o conteiner esta rodando com o comando:
+
+```bash
+docker ps
 ```
 
 Após o banco de dados estar rodando, execute a aplicação.
@@ -89,11 +96,27 @@ Você pode acessar o banco de dados no seu SGBD de preferência com as seguintes
 - **Nome do banco de dados:** gestao-biblioteca
 - **Serer Host:** localhost
 
+  ***OBS:*** Também pode acessar o banco diretamente pelo terminal:
+
+  pesquise pelo id do conteiner:
+  
+```bash
+ docker ps
+```
+  
+copie o id e o user-name do banco edite o comando a baixo:
+
+```bash
+ docker exec -it <container_id> psql -U <username-do-banco>
+```
+***Na minha experiência, em alguns momentos o sgbd não acessava o banco, e este comando ajudou*** 🙃
+  
 **Acesse a documentação da API no Swagger:**
 
 Com a API rodando, você pode acessar a documentação da API no Swagger, através do link:
+[http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 
-`http://localhost:8081/swagger-ui.html`
+
 
 ---
 
@@ -101,11 +124,13 @@ Com a API rodando, você pode acessar a documentação da API no Swagger, atrav�
 
 **Requisitos do projeto:**
 
-    - A API permiti o CRUD de livros, usuários e empréstimos.
-    - A API permiti a persistência dos dados em um banco de dados relacional.
-    - A API possui documentação automática no Swagger, por onde é possível testar os endpoints.
+   - A API permiti o CRUD de livros, usuários e empréstimos.
+   - A API permiti a persistência dos dados em um banco de dados relacional.
+   - A API possui documentação automática no Swagger, por onde é possível testar os endpoints.
 
 **Modelagem do Banco de Dados**
+
+Estas saõ as tabelas seus atributos e tipos de dados que podem ser persistidos.
 
 - Tabela: usuario
     - usiario_id: INTEGER
@@ -132,10 +157,16 @@ Com a API rodando, você pode acessar a documentação da API no Swagger, atrav�
 
 **Relacionamentos**
 
-As relações entre as entidades são:
+As relações entre as tabelas são:
 
-- Emprestimo para Usuario: 1 para N
-- Emprestimo para Livro: 1 para N
+- Emprestimo para Usuario: 1:N
+- Emprestimo para Livro: 1:N
+  
+   
+***Usuário e Empréstimo:*** Este é um relacionamento de um para muitos (1:N). Isso significa que um usuário pode ter vários empréstimos, mas cada empréstimo está associado a apenas um usuário. Isso é representado pela coluna usuario_id na tabela emprestimo, que é uma chave estrangeira referenciando a coluna usuario_id na tabela usuario.  
+
+***Livro e Empréstimo:*** Este também é um relacionamento de um para muitos (1:N). Isso significa que um livro pode estar em vários empréstimos, mas cada empréstimo está associado a apenas um livro. Isso é representado pela coluna livro_id na tabela emprestimo, que é uma chave estrangeira referenciando a coluna livro_id na tabela livro.  
+Esses relacionamentos permitem que você rastreie quais usuários emprestaram quais livros e quando.
 
 **Diagrama entidade-relacionamento**
 
