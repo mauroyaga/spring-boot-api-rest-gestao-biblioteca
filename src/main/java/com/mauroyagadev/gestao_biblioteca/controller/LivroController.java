@@ -25,6 +25,7 @@ public class LivroController {
     public Livro save(@RequestBody Livro livro) {
         return livroService.save(livro);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
         livroService.deleteById(id);

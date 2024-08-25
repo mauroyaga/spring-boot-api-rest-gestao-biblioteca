@@ -35,12 +35,11 @@ public class UsuarioController {
         return usuarioService.save(usuario);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario) {
-//        return usuarioService.update(id, usuario)
-//                .map(ResponseEntity::ok)
-//                .orElse(ResponseEntity.notFound().build());//   }
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario) {
+        Usuario updatedUser = usuarioService.update(id, usuario);
+        return ResponseEntity.ok(updatedUser);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
         usuarioService.deleteById(id);

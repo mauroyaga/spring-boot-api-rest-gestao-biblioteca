@@ -13,6 +13,7 @@ public class EmprestimoService {
     @Autowired
     private final EmprestimoRepository emprestimoRepository;
 
+
     @Autowired
     public EmprestimoService(EmprestimoRepository emprestimoRepository) {
         this.emprestimoRepository = emprestimoRepository;

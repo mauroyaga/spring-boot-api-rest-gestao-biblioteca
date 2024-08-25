@@ -1,28 +1,28 @@
 -- Cria a tabela de usuários
-CREATE TABLE usuarios (
-    id SERIAL PRIMARY KEY, -- Gera automaticamente um valor único para cada registro
-    nome VARCHAR(100) NOT NULL, -- Nome do usuário (máximo 100 caracteres)
-    email VARCHAR(100) UNIQUE NOT NULL, -- E-mail do usuário (máximo 100 caracteres, deve ser único)
-    data_cadastro DATE NOT NULL DEFAULT CURRENT_DATE, -- Data de cadastro do usuário (data atual por padrão)
-    telefone VARCHAR(20) NOT NULL -- Número de telefone do usuário (máximo 20 caracteres)
+CREATE TABLE usuario (
+    usuario_id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    data_cadastro DATE NOT NULL DEFAULT CURRENT_DATE,
+    telefone VARCHAR(20) NOT NULL
 );
 
 -- Cria a tabela de livros
-CREATE TABLE livros (
-    id SERIAL PRIMARY KEY, -- Gera automaticamente um valor único para cada registro
-    titulo VARCHAR(255) NOT NULL, -- Título do livro (máximo 255 caracteres)
-    autor VARCHAR(100) NOT NULL, -- Autor do livro (máximo 100 caracteres)
-    isbn VARCHAR(20) UNIQUE NOT NULL, -- Número ISBN do livro (máximo 20 caracteres, deve ser único)
-    data_publicacao DATE NOT NULL, -- Data de publicação do livro
-    categoria VARCHAR(50) NOT NULL -- Categoria do livro (máximo 50 caracteres)
+CREATE TABLE livro (
+    livro_id SERIAL PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    isbn VARCHAR(20) UNIQUE NOT NULL,
+    data_publicacao DATE NOT NULL,
+    categoria VARCHAR(50) NOT NULL
 );
 
 -- Cria a tabela de empréstimos
-CREATE TABLE emprestimos (
-    id SERIAL PRIMARY KEY, -- Gera automaticamente um valor único para cada registro
-    usuario_id INTEGER REFERENCES usuarios(id), -- Referência à tabela de usuários (chave estrangeira)
-    livro_id INTEGER REFERENCES livros(id), -- Referência à tabela de livros (chave estrangeira)
-    data_emprestimo DATE NOT NULL DEFAULT CURRENT_DATE, -- Data do empréstimo
-    data_devolucao DATE, -- Data de devolução (pode ser nulo se o livro ainda não foi devolvido)
+CREATE TABLE emprestimo (
+    emprestimo_id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuario(usuario_id),
+    livro_id INTEGER REFERENCES livro(livro_id),
+    data_emprestimo DATE NOT NULL DEFAULT CURRENT_DATE,
+    data_devolucao DATE,
     status VARCHAR(20) CHECK (status IN ('EMPRESTADO', 'DEVOLVIDO', 'RESERVADO')) NOT NULL DEFAULT 'EMPRESTADO'
-); -- Status do empréstimo (pode ser "EMPRESTADO", "DEVOLVIDO" ou "RESERVADO")
+);

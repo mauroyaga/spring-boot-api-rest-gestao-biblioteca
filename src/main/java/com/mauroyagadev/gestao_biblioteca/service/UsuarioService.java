@@ -28,17 +28,15 @@ public class UsuarioService {
     public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
-
-//    public Usuario update(Integer id, Usuario usuarioAtualizado) {
-//        return usuarioRepository.findById(id)
-//                .map(usuario -> {
-//                    usuario.setNome(usuarioAtualizado.getNome());
-//                    usuario.setEmail(usuarioAtualizado.getEmail());
-//                    usuario.setTelefone(usuarioAtualizado.getTelefone());
-//                    return usuarioRepository.save(usuario);
-//                })
-//                .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com id " + id));
-//    }
+    public Usuario update(Integer id, Usuario usuario) {
+        return usuarioRepository.findById(id)
+                .map(existingUser -> {
+                    existingUser.setNome(usuario.getNome());
+                    existingUser.setEmail(usuario.getEmail());
+                    return usuarioRepository.save(existingUser);
+                })
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    }
 
     public void deleteById(Integer id) {
         usuarioRepository.deleteById(id);

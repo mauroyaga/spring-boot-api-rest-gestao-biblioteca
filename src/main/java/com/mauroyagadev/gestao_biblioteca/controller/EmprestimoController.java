@@ -1,6 +1,8 @@
 package com.mauroyagadev.gestao_biblioteca.controller;
 
 import com.mauroyagadev.gestao_biblioteca.entity.Emprestimo;
+import com.mauroyagadev.gestao_biblioteca.entity.Livro;
+import com.mauroyagadev.gestao_biblioteca.entity.Usuario;
 import com.mauroyagadev.gestao_biblioteca.service.EmprestimoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,8 @@ public class EmprestimoController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    @PostMapping
+
+   @PostMapping
     public Emprestimo save(@RequestBody Emprestimo emprestimo) {
         return emprestimoService.save(emprestimo);
     }

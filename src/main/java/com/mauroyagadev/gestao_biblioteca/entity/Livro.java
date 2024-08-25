@@ -31,5 +31,5 @@ public class Livro {
     @Column(nullable = false, length = 50)
     private String categoria;
     @OneToMany(mappedBy = "livro")
-    private List<Emprestimo> emprestimos;
+    private List<Emprestimo> emprestimo;
 }
