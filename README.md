@@ -14,6 +14,7 @@ mas pode contribuir para o conhecimento deste tipo de tecnologia.
 - [Dependências](#dependências)
 - [Instruções](#instruções)
   - [Requisitos para rodar a aplicação](#requisitos-para-rodar-a-aplicação)
+  - [Testando a API](#testando-a-api)
   - [Acesse o Banco pelo SGBD](#acesse-o-banco-pelo-sgbd)
   - [Acesse a documentação da API no Swagger](#acesse-a-documentação-da-api-no-swagger)
 - [Endpoints](#endpoints)
@@ -39,7 +40,7 @@ O objetivo de desenvolvimento desta API atender os requisitos de um desafio de d
 
 ---
 
- # Tecnologias
+ ## Tecnologias
 
 - Java: Linguagem de programação usada para desenvolver a aplicação.
 - Spring Boot: Framework para facilitar o desenvolvimento de aplicações Java.
@@ -75,7 +76,7 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
  - IDE 
  - SGBD 
 
-### Para testar esta API de gestão de biblioteca, siga os passos abaixo
+### Testando a API
 
 **clone o repositório:**
 
