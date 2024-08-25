@@ -74,8 +74,10 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
  - Docker 
  - Docker-compose
  - IDE 
- - SGBD 
+ - SGBD
 
+  ---
+  
 ### Testando a API
 
 **clone o repositório:**
