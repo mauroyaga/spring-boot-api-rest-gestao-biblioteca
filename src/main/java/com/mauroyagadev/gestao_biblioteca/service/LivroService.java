@@ -26,7 +26,15 @@ public class LivroService {
     public Livro save(Livro livro) {
         return livrosRepository.save(livro);
     }
-
+public Livro update(Integer livro_id, Livro livro) {
+        return livrosRepository.findById(livro_id)
+                .map(existingLivro -> {
+                    existingLivro.setTitulo(livro.getTitulo());
+                    existingLivro.setAutor(livro.getAutor());
+                    return livrosRepository.save(existingLivro);
+                })
+                .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
+    }
 
     public void deleteById(Integer id) {
         livrosRepository.deleteById(id);

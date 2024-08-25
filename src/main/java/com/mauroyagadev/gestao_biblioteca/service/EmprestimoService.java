@@ -31,6 +31,16 @@ public class EmprestimoService {
         return emprestimoRepository.save(emprestimo);
     }
 
+    public Emprestimo update(Integer id, Emprestimo emprestimo) {
+        return emprestimoRepository.findById(id)
+                .map(existingEmprestimo -> {
+                    existingEmprestimo.setUsuario(emprestimo.getUsuario());
+                    existingEmprestimo.setLivro(emprestimo.getLivro());
+                    existingEmprestimo.setDataDevolucao(emprestimo.getDataDevolucao());
+                    return emprestimoRepository.save(existingEmprestimo);
+                })
+                .orElseThrow(() -> new RuntimeException("Emprestimo não encontrado"));
+    }
     public void deleteById(Integer id) {
         emprestimoRepository.deleteById(id);
     }

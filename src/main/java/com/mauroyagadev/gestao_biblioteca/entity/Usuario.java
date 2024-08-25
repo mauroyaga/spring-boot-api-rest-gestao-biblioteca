@@ -21,4 +21,8 @@ public class Usuario {
     private String telefone;
     @OneToMany(mappedBy = "usuario")
     private List<Emprestimo> emprestimo;
+
+    public Integer getId() {
+        return usuario_id;
+    }
 }
