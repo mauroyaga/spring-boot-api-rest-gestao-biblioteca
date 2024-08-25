@@ -79,8 +79,14 @@ Com o arquivo clonado, descompactado e aberto na sua IDE de preferência, execut
 ```bash
 docker-compose up -d
 ```
+Se todas as dependências e requisitos necessários estiverem corretos, seu banco de dados estará rodando em um contêiner docker.
+A API irá criar automaticamente as tabelas no banco de dados, através do arquivo init.sql contido no diretório ***docker-entrypoint-initdb.d*** que contém o sql das tabelas.
+Tudo isso configurado pelo ***docker-compose.yaml***
 
-Você verificar se o conteiner esta rodando com o comando:
+execute a aplicação.
+
+
+Você pode verificar se o conteiner esta rodando com o comando:
 
 ```bash
 docker ps
