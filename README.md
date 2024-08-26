@@ -95,7 +95,7 @@ docker-compose up -d
 ```
 Se todas as dependências e requisitos necessários estiverem devidamente configurados e disponíveis, seu banco de dados estará rodando em um contêiner docker.
 A API irá criar automaticamente as tabelas no banco de dados, através do arquivo init.sql contido no diretório ***docker-entrypoint-initdb.d*** que contém o sql das tabelas.
-Tudo isso configurado pelo ***docker-compose.yaml***
+Tudo isso configurado pelo ***docker-compose.yaml***.
 
 ![Arquivos de configuração do banco](./assets/localizando-arquivos-de-configuracao-do-bd.png)
 
@@ -105,6 +105,8 @@ Você pode verificar se o conteiner está rodando com o comando:
 ```bash
 docker ps
 ```
+
+---
 
 ### Acesse o Banco pelo SGBD
 
@@ -116,20 +118,32 @@ Você pode acessar o banco de dados no seu SGBD de preferência com as seguintes
 - **Nome do banco de dados:** gestao-biblioteca
 - **Server Host:** localhost
 
-  ***OBS:*** Também pode acessar o banco diretamente pelo terminal:
+***OBS:*** Também pode acessar o banco diretamente pelo terminal
 
-  pesquise pelo id do conteiner:
+pesquise pelo id do conteiner com o comando:
   
 ```bash
  docker ps
 ```
-  
-copie o id do contêiner e o nome de usuario edite o comando a baixo:
+
+exemplo de retorno do comando ***docker ps***
+
+![Exemplo de retorno do comando docker ps](./assets/img-docmentacao-saida-docker-ps.png)
+
+
+copie o id do contêiner  que retornou no seu terminal e edite o comando a baixo:
+
+Obs: o username do banco criado é ***postgre***, e foi definido no arquivo docker-compose.yaml., assim como todas as credênciais de conexão com o bancode dados.
 
 ```bash
  docker exec -it <container_id> psql -U <username-do-banco>
 ```
+
+
 ***Na minha experiência, em alguns momentos o sgbd não acessava o banco, e este comando ajudou*** 🙃
+
+---
+
   
 ## Acesse a documentação da API no Swagger
 
@@ -139,7 +153,7 @@ Com a API rodando, você pode acessar a documentação da API no Swagger, atrav�
 
 Lá você tera acesso a um interface visual para os endpoints da APi e podera fazer as requisições para testar a aplicação.
 
-![Descrição da imagem](./assets/endpoints-swegger.png)
+![Endpoint do Swegger](./assets/endpoints-swegger.png)
 
 --- 
 
@@ -173,6 +187,7 @@ Lá você tera acesso a um interface visual para os endpoints da APi e podera fa
     }
 ]
 ```
+
 **2. Obter um usuário por ID**
    
 - Endpoint: /usuarios/{id}
@@ -206,6 +221,7 @@ Exemplo de corpo da requisição:
     "telefone": "11999999999"
 }
 ```
+
 **4. Atualizar um usuário**
 
 - Endpoint: /usuarios/{id}
@@ -221,6 +237,7 @@ Exemplo de corpo da requisição:
     "telefone": "11999999999"
 }
 ```
+
 **5. Deletar um usuário**
    
 - Endpoint: /usuarios/{id}
@@ -408,6 +425,7 @@ Exemplo de corpo da requisição:
 }
 
 ```
+
 **5. Deletar um empréstimo**
    
 - Endpoint: /emprestimos/{id}
@@ -416,13 +434,15 @@ Exemplo de corpo da requisição:
   
 Substitua {id} pelo ID do empréstimo que deseja deletar.
 
-# Documentação
+## Documentação
 
 ### Requisitos do projeto
 
    - A API permiti o CRUD de livros, usuários e empréstimos.
    - A API permiti a persistência dos dados em um banco de dados relacional.
    - A API possui documentação automática no Swagger, por onde é possível testar os endpoints.
+
+---
 
 ### Modelagem do Banco de Dados
 
@@ -458,7 +478,6 @@ As relações entre as tabelas são:
 - Emprestimo para Usuario: 1:N
 - Emprestimo para Livro: 1:N
   
-   
 ***Usuário e Empréstimo:*** Este é um relacionamento de um para muitos (1:N). Isso significa que um usuário pode ter vários empréstimos, mas cada empréstimo está associado a apenas um usuário. Isso é representado pela coluna usuario_id na tabela emprestimo, que é uma chave estrangeira referenciando a coluna usuario_id na tabela usuario.  
 
 ***Livro e Empréstimo:*** Este também é um relacionamento de um para muitos (1:N). Isso significa que um livro pode estar em vários empréstimos, mas cada empréstimo está associado a apenas um livro. Isso é representado pela coluna livro_id na tabela emprestimo, que é uma chave estrangeira referenciando a coluna livro_id na tabela livro.  
@@ -472,9 +491,35 @@ Esses relacionamentos permitem que você rastreie quais usuários emprestaram qu
 
 # Abordagem
 
+- Estudo dos Requisitos: O primeiro passo foi o estudo dos requisitos para entender as limitações técnicas que eu poderia encontrar, a curva de aprendizagem necessária
+para realizar alguns dos requisitos dos quais não tenho familiaridade, e por fim  iniciar um esboço do projeto.
+
+- Modelagem e criação do Banco de Dados: Optei por começar o projeto pelo banco de dados, pois na minha concepção, eu teria uma forma de começar a pensar em como consumir a base de dados
+e a abordagem de como desenvolver a API partindo desta interpretação.
+
+- Inicialização do Projeto com Spring Initializr: O projeto foi inicializado usando o Spring Initializr, uma ferramenta online que gera a estrutura básica de um projeto Spring Boot.
+As dependências selecionadas incluíram Spring Web, Spring Data JPA, PostgreSQL Driver e Lombok. Escolhi estas depêndências pois no meu ambiênte de estudos são as que já tive a oportunidade
+de utilizar em projetos de MVP´s. 
+
+- Criação dos Pacotes e Classes: Após a inicialização do projeto, os pacotes e classes foram criados:
+  
+1. Entity: As classes de Entity foram criadas primeiro. Estas classes representam as entidades do banco de dados e incluem Usuario, Livro e Emprestimo.  
+2. Repository: Em seguida, foram criados os repositórios para cada entidade. Estes repositórios estendem a interface JpaRepository e fornecem métodos para operações de banco de dados.  
+3. Service: As classes de serviço foram criadas para encapsular a lógica de negócios. Cada classe de serviço tem métodos que correspondem às operações CRUD para uma entidade específica.  
+4. Controller: Finalmente, foram criados os controladores para cada entidade. Estes controladores expõem os endpoints da API e fazem uso dos serviços para manipular os dados.  
+4. Arquivos de Configuração: O arquivo application.properties foi configurado para conectar a aplicação ao banco de dados PostgreSQL. Além disso, um arquivo docker-compose.yaml foi criado para configurar o contêiner Docker para o banco de dados PostgreSQL.
+   
+   OBS: No caso alguns arquivos de configuração foram desenvolvidos antes das classes principais da arquitetura, pois era necessário para utilizar o banco de dados.
+   
+5. Testes com os Endpoints: Com a aplicação em execução, os endpoints da API foram testados usando a interface do Swagger. Isso permitiu verificar se todas as operações CRUD estavam funcionando corretamente para cada entidade.  
+
+A ordem que escolhi para desenvolver as classes foi baseado na ordem em que entendo as relações entre as camadas da aplicação.
+
 ---
 
 
 # Disclaimers
+
+
 
 ...
