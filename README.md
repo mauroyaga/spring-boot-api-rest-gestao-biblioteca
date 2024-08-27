@@ -413,6 +413,14 @@ Substitua {id} pelo ID do empréstimo que deseja deletar.
 
 ## Documentação
 
+**Visão Geral do ambiente da Aplicação**
+
+
+![Visão Geral da Aplicação](./assets/ambiente-aplicacao-gestao-bd.png)
+
+
+---
+
 ### Requisitos do projeto
 
    - A API permiti o CRUD de livros, usuários e empréstimos.
