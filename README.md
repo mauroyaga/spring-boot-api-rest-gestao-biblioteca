@@ -118,29 +118,6 @@ Você pode acessar o banco de dados no seu SGBD de preferência com as seguintes
 - **Nome do banco de dados:** gestao-biblioteca
 - **Server Host:** localhost
 
-***OBS:*** Também pode acessar o banco diretamente pelo terminal
-
-pesquise pelo id do conteiner com o comando:
-  
-```bash
- docker ps
-```
-
-exemplo de retorno do comando ***docker ps***
-
-![Exemplo de retorno do comando docker ps](./assets/img-docmentacao-saida-docker-ps.png)
-
-
-copie o id do contêiner  que retornou no seu terminal e edite o comando a baixo:
-
-Obs: o username do banco criado é ***postgre***, e foi definido no arquivo docker-compose.yaml., assim como todas as credênciais de conexão com o bancode dados.
-
-```bash
- docker exec -it <container_id> psql -U <username-do-banco>
-```
-
-
-***Na minha experiência, em alguns momentos o sgbd não acessava o banco, e este comando ajudou*** 🙃
 
 ---
 
@@ -486,6 +463,11 @@ Esses relacionamentos permitem que você rastreie quais usuários emprestaram qu
 ### Diagrama entidade-relacionamento
 
 ![Diagrama](assets/gestao-biblioteca-der.png)
+
+
+**Classes das Entidades**
+
+![Classes Entidades](assets/classes-de-entidades.png)
   
 ---
 
