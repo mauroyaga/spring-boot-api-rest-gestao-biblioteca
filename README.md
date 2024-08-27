@@ -27,7 +27,7 @@ mas pode contribuir para o conhecimento deste tipo de tecnologia.
   - [Relacionamentos](#relacionamentos)
   - [Diagrama entidade-relacionamento](#diagrama-entidade-relacionamento)
 - [Abordagem](#abordagem)
-- [Disclaimers](#disclaimers)
+- [Limitações e Problemas do Projeto](#limitações-e-problemas-do-projeto)
 
 ---
 
@@ -508,7 +508,7 @@ A ordem que escolhi para desenvolver as classes foi baseado na ordem em que ente
 ---
 
 
-# Disclaimers
+## Limitações e Problemas do Projeto
 
 
 
