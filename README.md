@@ -8,19 +8,13 @@ mas pode contribuir para o conhecimento deste tipo de tecnologia.
 
 ## Sumário
 
-<<<<<<< HEAD
-=======
 - [API REST Gestão de Biblioteca](#api-rest-gestão-de-biblioteca)
->>>>>>> a76aad898c0382d42cde31fcaf4b0258c8307eea
 - [Descrição](#descrição)
 - [Tecnologias](#tecnologias)
 - [Dependências](#dependências)
 - [Instruções](#instruções)
-<<<<<<< HEAD
 - [Documentação](#documentação)
 - [Abordagem](#abordagem)
-- [Disclaimers](#disclaimers)
-=======
   - [Requisitos para rodar a aplicação](#requisitos-para-rodar-a-aplicação)
   - [Testando a API](#testando-a-api)
   - [Acesse o Banco pelo SGBD](#acesse-o-banco-pelo-sgbd)
@@ -36,8 +30,6 @@ mas pode contribuir para o conhecimento deste tipo de tecnologia.
   - [Diagrama entidade-relacionamento](#diagrama-entidade-relacionamento)
 - [Abordagem](#abordagem)
 - [Limitações e Problemas do Projeto](#limitações-e-problemas-do-projeto)
->>>>>>> a76aad898c0382d42cde31fcaf4b0258c8307eea
-
 ---
 
 ## Descrição
@@ -76,11 +68,8 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 
 ## Instruções
 
-<<<<<<< HEAD
-**Requisitos para rodar a aplicação:**
-=======
 ### Requisitos para rodar a aplicação:
->>>>>>> a76aad898c0382d42cde31fcaf4b0258c8307eea
+
  - java 17 ou superior
  - jdk
  - Maven 
