@@ -1,5 +1,6 @@
 package com.mauroyagadev.gestao_biblioteca.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,8 @@ import java.util.List;
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "livro_id")
+    private int livro_id;
 
     @Column(nullable = false, length = 255)
     private String titulo;
@@ -30,6 +32,7 @@ public class Livro {
 
     @Column(nullable = false, length = 50)
     private String categoria;
+    @JsonManagedReference
     @OneToMany(mappedBy = "livro")
     private List<Emprestimo> emprestimo;
 }

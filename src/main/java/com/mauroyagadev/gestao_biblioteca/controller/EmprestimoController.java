@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/emprestimo")
@@ -40,16 +42,12 @@ public class EmprestimoController {
     }
 
     @PostMapping
-    public Emprestimo save(@RequestBody Emprestimo emprestimo) {
-        Usuario usuario = usuarioService.findById(emprestimo.getUsuario().getId())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        Livro livro = livroService.findById(emprestimo.getLivro().getId())
-                .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
-
-        emprestimo.setUsuario(usuario);
-        emprestimo.setLivro(livro);
-
-        return emprestimoService.save(emprestimo);
+    public Emprestimo save(@RequestBody Map<String, Object> body) {
+        int usuarioId = (int) body.get("usuarioId");
+        int livroId = (int) body.get("livroId");
+        LocalDate dataDevolucao = LocalDate.parse((String) body.get("dataDevolucao"));
+        Emprestimo.StatusEmprestimo status = Emprestimo.StatusEmprestimo.valueOf((String) body.get("status"));
+        return emprestimoService.save(usuarioId, livroId, dataDevolucao, status);
     }
     @PutMapping("/{id}")
     public ResponseEntity<Emprestimo> update(@PathVariable Integer id, @RequestBody Emprestimo emprestimo) {
