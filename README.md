@@ -288,7 +288,7 @@ Exemplo de corpo da requisição:
     "titulo": "O Senhor dos Anéis",
     "autor": "J.R.R. Tolkien",
     "isbn": "9788533613379",
-    "data_publicacao": "1954-07-29",
+    "dataPublicacao": "1954-07-29",
     "categoria": "Fantasia"
 }
 
@@ -381,9 +381,10 @@ Exemplo de corpo da requisição:
 
 ```bash
 {
-    "usuario_id": 1,
-    "livro_id": 1,
-    "data_emprestimo": "2022-01-01"
+    "usuarioId": 1,
+    "livroId": 1,
+    "dataDevolucao": "2024-08-31",
+    "status": "EMPRESTADO"
 }
 ```
 
@@ -398,7 +399,7 @@ Exemplo de corpo da requisição:
 ```bash
 {
     "data_devolucao": "2022-01-15",
-    "status": "Devolvido"
+    "status": "DEVOLVIDO"
 }
 
 ```
