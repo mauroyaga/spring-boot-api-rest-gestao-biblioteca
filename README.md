@@ -1,7 +1,7 @@
 # API REST Gestão de Biblioteca
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)![SpingBoot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-Este projeto conciste em uma API Java com Sping Boot para gestão de blioteca. Foi desenvolvido a mérito de estudos, com base em um desafio técnico. Ainda tem diversos pontos a ser aprimorado
+Este projeto conciste em uma API Java com Sping Boot para gestão de blioteca. Foi desenvolvido a mérito de estudos, com base em um desafio técnico. Ainda tem diversos pontos a serem aprimorados,
 mas pode contribuir para o conhecimento deste tipo de tecnologia.
 
 ---
@@ -166,6 +166,7 @@ Lá você tera acesso a um interface visual para os endpoints da APi e podera fa
     }
 ]
 ```
+---
 
 **2. Obter um usuário por ID**
    
@@ -184,6 +185,7 @@ Lá você tera acesso a um interface visual para os endpoints da APi e podera fa
     "telefone": "11999999999"
 }   
 ```
+---
 
 **3. Criar um novo usuário**
    
@@ -200,6 +202,7 @@ Exemplo de corpo da requisição:
     "telefone": "11999999999"
 }
 ```
+---
 
 **4. Atualizar um usuário**
 
@@ -216,6 +219,7 @@ Exemplo de corpo da requisição:
     "telefone": "11999999999"
 }
 ```
+---
 
 **5. Deletar um usuário**
    
@@ -257,6 +261,7 @@ Substitua {id} pelo ID do usuário que deseja deletar.
     }
   ]
   ```
+---
 
 **2. Obter um livro por ID**
    
@@ -276,6 +281,7 @@ Substitua {id} pelo ID do usuário que deseja deletar.
     "categoria": "Fantasia"
   }
   ```
+  ---
   
 **3. Criar um novo livro**
    
@@ -295,6 +301,7 @@ Exemplo de corpo da requisição:
 }
 
 ```
+---
 
 **4. Atualizar um livro**
    
@@ -313,6 +320,7 @@ Exemplo de corpo da requisição:
     "categoria": "Fantasia"
 }
 ```
+---
 
 **5. Deletar um livro**
    
@@ -321,6 +329,8 @@ Exemplo de corpo da requisição:
 - Resposta: Sem corpo de resposta. O status HTTP 204 (No Content) indica que o livro foi deletado com sucesso.
   
 Substitua {id} pelo ID do livro deseja deletar.
+
+---
 
 ### Emprestimo
 
@@ -352,6 +362,7 @@ Exemplo de resposta:
     }
 ]
 ```
+---
 
 **2. Obter um empréstimo por ID**
    
@@ -372,6 +383,7 @@ Exemplo de resposta:
 }
 
 ```
+---
 
 **3. Criar um novo empréstimo**
    
@@ -389,6 +401,7 @@ Exemplo de corpo da requisição:
     "status": "EMPRESTADO"
 }
 ```
+---
 
 **4. Atualizar um empréstimo**
    
@@ -405,6 +418,7 @@ Exemplo de corpo da requisição:
 }
 
 ```
+---
 
 **5. Deletar um empréstimo**
    
@@ -413,6 +427,8 @@ Exemplo de corpo da requisição:
 - Resposta: Sem corpo de resposta. O status HTTP 204 (No Content) indica que o empréstimo foi - deletado com sucesso.
   
 Substitua {id} pelo ID do empréstimo que deseja deletar.
+
+---
 
 ## Documentação
 
@@ -458,6 +474,8 @@ Estas saõ as tabelas seus atributos e tipos de dados que podem ser persistidos.
     - data_emprestimo: DATE
     - data_devolucao: DATE
     - status: VARCHAR
+      
+---
 
 ### Relacionamentos
 
@@ -470,6 +488,8 @@ As relações entre as tabelas são:
 
 ***Livro e Empréstimo:*** Este também é um relacionamento de um para muitos (1:N). Isso significa que um livro pode estar em vários empréstimos, mas cada empréstimo está associado a apenas um livro. Isso é representado pela coluna livro_id na tabela emprestimo, que é uma chave estrangeira referenciando a coluna livro_id na tabela livro.  
 Esses relacionamentos permitem que você rastreie quais usuários emprestaram quais livros e quando.
+
+---
 
 ### Diagrama entidade-relacionamento
 
