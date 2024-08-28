@@ -73,7 +73,7 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
  - java 17 ou superior
  - jdk
  - Maven 
- - Docker 
+ - Docker 27.1.1 ou superior
  - Docker-compose
  - IDE 
  - SGBD
