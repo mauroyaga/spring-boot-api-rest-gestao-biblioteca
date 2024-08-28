@@ -6,16 +6,15 @@
 
 ---
 
-
 ## Sumário
 
-- [Descrição](#Descrição)
-- [Tecnologias](#Tecnologias)
-- [Dependências](#Dependências)
-- [Instruções](#Instruções)
-- [Documentação](#Documentação)
-- [Abordagem](#Abordagem)
-- [Disclaimers](#Disclaimers)
+- [Descrição](#descrição)
+- [Tecnologias](#tecnologias)
+- [Dependências](#dependências)
+- [Instruções](#instruções)
+- [Documentação](#documentação)
+- [Abordagem](#abordagem)
+- [Disclaimers](#disclaimers)
 
 ---
 
@@ -55,7 +54,7 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 
 ## Instruções
 
-***Requisitos para rodar a aplicação:***
+**Requisitos para rodar a aplicação:**
  - java 17 ou superior
  - jdk
  - maven 
@@ -66,7 +65,7 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 
 Para testar esta API de gestão de biblioteca, siga os passos abaixo:
 
-***clone o repositório:***
+**clone o repositório:**
 
 ```bash
 git clone https://github.com/mauroyaga/sring-boot-api-rest-gestao-biblioteca.git
