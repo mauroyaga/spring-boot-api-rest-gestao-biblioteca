@@ -331,7 +331,8 @@ Exemplo de corpo da requisição:
 - Resposta: Sem corpo de resposta. O status HTTP 204 (No Content) indica que o livro foi deletado com sucesso.
   
 Substitua {id} pelo ID do livro deseja deletar.
-***OBS: Para o estado atual da API, um livro só pode ser deletado se não houver uma emprestimo registrado associado!***
+
+**OBS: Para o estado atual da API, um livro só pode ser deletado se não houver uma emprestimo registrado associado!**
 
 ---
 
@@ -404,7 +405,9 @@ Exemplo de corpo da requisição:
     "status": "EMPRESTADO"
 }
 ```
+
 ***OBS: Para o estado atual da API, você deve garantir que o usuario_id e livro_id já estejam registrados no banco***
+
 ---
 
 **4. Atualizar um empréstimo**
@@ -427,7 +430,9 @@ Exemplo de corpo da requisição:
     "status": "DEVOLVIDO"
 }
 ```
-***OBS: Para o estado atual da API a requisição PUT não está funcionando corretamente. Apesar de estar documentada, não houve tempo hábil para a correção!***
+
+**OBS: Para o estado atual da API a requisição PUT não está funcionando corretamente. Apesar de estar documentada, não houve tempo hábil para a correção!**
+
 ---
 
 **5. Deletar um empréstimo**
@@ -556,6 +561,16 @@ Para essa aplicação foi cirado um teste para a classe ***EmprestimoService***.
 
 ## Limitações e Problemas do Projeto
 
+Durante o desenvolvimento deste projeto, pude perceber diversas dificuldades que envolveram principalmente, conhecimento e pratica! 
+Alguns problemas só foram percebidos no final do prazo de entrega, posso resaltar que o maior deles tem relação com a escolha
+de deixar a documentação dos requisitos como um passo posterior ao início do desenvolvimento. 
+Listarei aqui os principais pontos que pretendo trabalhar futuramente para melhorar este projeto e tornalo mais profissional:
 
+1. Nomenclaturas: A nomenclatura dos componentes da aplicação está com uma mistura de inglês e português;
+2. Documentação: A documentação antecipada dos requisitos poderia ter tornado o desenvolvimento mais preciso;
+3. Acoplamento: Este é um ponto crítico, principalmente em relação a lógica de negócio da aplicação. A questão da utilização de
+   heranças e interfaces, tornando o código mais modular e independente, com certeza foi o ponto mais crítico para minha experiência no desenvovlimento desta aplicação;
+4. Testes: O uso de testes contínuos durante o desenvolvimento, teria me polpado muitas horas, com bugs e incertezas sobre o funcionamneto de métodos.
 
-...
+A pesar de todas as dificuldades, e os milhares de bugs, foi uma ótima experiencia! 
+   
