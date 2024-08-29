@@ -1,0 +1,7 @@
+package com.mauroyagadev.gestao_biblioteca.repository;
+
+import com.mauroyagadev.gestao_biblioteca.entity.Livro;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LivroRepository extends JpaRepository<Livro, Integer> {
+}
