@@ -29,6 +29,7 @@ mas pode contribuir para o conhecimento deste tipo de tecnologia.
   - [Relacionamentos](#relacionamentos)
   - [Diagrama entidade-relacionamento](#diagrama-entidade-relacionamento)
 - [Abordagem](#abordagem)
+  - [Teste](#teste)
 - [Limitações e Problemas do Projeto](#limitações-e-problemas-do-projeto)
 ---
 
@@ -71,12 +72,12 @@ A API de gestão de biblioteca foi desenvolvida com as seguintes dependências:
 ### Requisitos para rodar a aplicação:
 
  - java 17 ou superior
- - jdk
  - Maven 
  - Docker 27.1.1 ou superior
  - Docker-compose
  - IDE 
  - SGBD
+ - JUnit 5
 
   ---
   
@@ -228,6 +229,7 @@ Exemplo de corpo da requisição:
 - Resposta: Sem corpo de resposta. O status HTTP 204 (No Content) indica que o usuário foi deletado com sucesso.
   
 Substitua {id} pelo ID do usuário que deseja deletar.
+***OBS: Para o estado atual da API, um usuário só pode ser deletado se não houver uma emprestimo registrado associado!***
 
 ---
 
@@ -329,6 +331,7 @@ Exemplo de corpo da requisição:
 - Resposta: Sem corpo de resposta. O status HTTP 204 (No Content) indica que o livro foi deletado com sucesso.
   
 Substitua {id} pelo ID do livro deseja deletar.
+***OBS: Para o estado atual da API, um livro só pode ser deletado se não houver uma emprestimo registrado associado!***
 
 ---
 
@@ -395,12 +398,13 @@ Exemplo de corpo da requisição:
 
 ```bash
 {
-    "usuarioId": 1,
-    "livroId": 1,
-    "dataDevolucao": "2024-08-31",
+    "usuario_id": 1,
+    "livro_id": 1,
+    "dataDevolucao": "2024-09-28",
     "status": "EMPRESTADO"
 }
 ```
+***OBS: Para o estado atual da API, você deve garantir que o usuario_id e livro_id já estejam registrados no banco***
 ---
 
 **4. Atualizar um empréstimo**
@@ -413,11 +417,17 @@ Exemplo de corpo da requisição:
 
 ```bash
 {
-    "data_devolucao": "2022-01-15",
+    "usuario": {
+        "usuario_id": 1
+    },
+    "livro": {
+        "livro_id": 1
+    },
+    "dataDevolucao": "2024-09-28",
     "status": "DEVOLVIDO"
 }
-
 ```
+***OBS: Para o estado atual da API a requisição PUT não está funcionando corretamente. Apesar de estar documentada, não houve tempo hábil para a correção!***
 ---
 
 **5. Deletar um empréstimo**
@@ -510,7 +520,7 @@ para realizar alguns dos requisitos dos quais não tenho familiaridade, e por fi
 - Modelagem e criação do Banco de Dados: Optei por começar o projeto pelo banco de dados, pois na minha concepção, eu teria uma forma de começar a pensar em como consumir a base de dados
 e a abordagem de como desenvolver a API partindo desta interpretação.
 
-- Inicialização do Projeto com Spring Initializr: O projeto foi inicializado usando o Spring Initializr, uma ferramenta online que gera a estrutura básica de um projeto Spring Boot.
+- Inicialização do Projeto com Spring Initializr: O projeto foi inicializado usando o Spring Initializr.
 As dependências selecionadas incluíram Spring Web, Spring Data JPA, PostgreSQL Driver e Lombok. Escolhi estas depêndências pois no meu ambiênte de estudos são as que já tive a oportunidade
 de utilizar em projetos de MVP´s. 
 
@@ -519,7 +529,7 @@ de utilizar em projetos de MVP´s.
 1. Entity: As classes de Entity foram criadas primeiro. Estas classes representam as entidades do banco de dados e incluem Usuario, Livro e Emprestimo.  
 2. Repository: Em seguida, foram criados os repositórios para cada entidade. Estes repositórios estendem a interface JpaRepository e fornecem métodos para operações de banco de dados.  
 3. Service: As classes de serviço foram criadas para encapsular a lógica de negócios. Cada classe de serviço tem métodos que correspondem às operações CRUD para uma entidade específica.  
-4. Controller: Finalmente, foram criados os controladores para cada entidade. Estes controladores expõem os endpoints da API e fazem uso dos serviços para manipular os dados.  
+4. Controller: Finalmente, foram criados os controladores para cada entidade. Nesta classe exponho os endpoints da API e faço uso dos serviços para manipular os dados.  
 4. Arquivos de Configuração: O arquivo application.properties foi configurado para conectar a aplicação ao banco de dados PostgreSQL. Além disso, um arquivo docker-compose.yaml foi criado para configurar o contêiner Docker para o banco de dados PostgreSQL.
    
    OBS: No caso alguns arquivos de configuração foram desenvolvidos antes das classes principais da arquitetura, pois era necessário para utilizar o banco de dados.
@@ -530,6 +540,19 @@ A ordem que escolhi para desenvolver as classes foi baseado na ordem em que ente
 
 ---
 
+## Teste
+
+Para essa aplicação foi cirado um teste para a classe ***EmprestimoService***. Desenvolvi um teste unitário para o método  ***Emprestimo update*** do EmprestimoService.
+- Primeiro, criei um Usuario, um Livro e um Emprestimo para o teste.
+-  Em seguida, Configurei os mocks para retornar esses objetos quando os métodos correspondentes forem chamados.
+-  Depois, eu chamo o método update do EmprestimoService e armazeno o Emprestimo retornado em updatedEmprestimo.
+-  Por fim, eu verifico se updatedEmprestimo é igual ao Emprestimo original, o que indica que o método update funcionou como esperado.
+  
+  Este teste garante que o método update do EmprestimoService está funcionando corretamente e pode atualizar um Emprestimo existente com novos dados.
+
+  **Objetivo do Teste
+  Criei este teste, pois o método update foi do Empréstimo foi o único que não concegui consumi pelo Swgger. Testei diversos requisições no Response Body, porém nenhuma delas atualizava da
+  maneira correta o emprestimo. 
 
 ## Limitações e Problemas do Projeto
 
